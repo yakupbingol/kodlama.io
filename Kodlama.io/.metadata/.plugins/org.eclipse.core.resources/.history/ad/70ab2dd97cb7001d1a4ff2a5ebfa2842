@@ -1,0 +1,37 @@
+package kodlama.io.Kodlama.io.Devs.webApi.controllers;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import kodlama.io.Kodlama.io.Devs.business.abstracts.LanguageService;
+import kodlama.io.Kodlama.io.Devs.entities.concretes.Language;
+
+public class LanguageController {
+	private LanguageService languageService;
+
+	public LanguageController(LanguageService languageService) {
+		this.languageService = languageService;
+	}
+
+	public void insertLanguage(Language language) {
+		languageService.insertLanguage(language);
+	}
+
+	@GetMapping("/getAllLanguage")
+	public List<Language> getLanguages() {
+		return languageService.getAllLanguage();
+
+	}
+	@GetMapping("/getId/{id}")
+	public Language getWithLanguage(int id) {
+		return languageService.getLanguageId(id);
+	}
+	
+	@DeleteMapping("/deleteLanguage/{id}")
+	public void deleteLanguage(int id) {
+		languageService.deleteLanguage(id);
+	}
+
+}
